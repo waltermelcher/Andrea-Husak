@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, url } from '../site';
+---
+<Base title="Impressum – Andrea Husak-Ramesohl" description="Impressum der Husak-Ramesohl GmbH">
+  <section class="legal">
+    <div class="wrap legal-inner">
+      <h1>Impressum</h1>
+      <p class="note">Platzhaltertext: Bitte vor der Veröffentlichung rechtlich prüfen und vervollständigen.</p>
+
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p>{contact.company}<br />{contact.street}<br />{contact.city}<br />Deutschland</p>
+
+      <h2>Vertreten durch</h2>
+      <p>Geschäftsführerin: {contact.name}</p>
+
+      <h2>Kontakt</h2>
+      <p>Telefon: <a href={contact.phoneHref}>{contact.phone}</a><br />E-Mail: <a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+
+      <h2>Registereintrag</h2>
+      <p>Eintragung im Handelsregister<br />Registergericht: {contact.court}<br />Registernummer: {contact.hrb}</p>
+
+      <h2>Umsatzsteuer-ID</h2>
+      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: {contact.vat}</p>
+
+      <h2>Berufsbezeichnung</h2>
+      <p>B.Sc. Psychologie (verliehen in Deutschland), graduiertes Mitglied im Berufsverband Deutscher Psychologinnen und Psychologen (BDP). Lorem ipsum dolor sit amet, consetetur sadipscing elitr – bitte ergänzen.</p>
+
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>{contact.name}, {contact.street}, {contact.city}</p>
+
+      <h2>Streitschlichtung</h2>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+      <h2>Haftung für Inhalte</h2>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+      <h2>Haftung für Links</h2>
+      <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.</p>
+
+      <h2>Urheberrecht</h2>
+      <p>Die durch die Seitenbetreiberin erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+
+      <a class="back" href={url('')}>Zurück zur Startseite</a>
+    </div>
+  </section>
+</Base>

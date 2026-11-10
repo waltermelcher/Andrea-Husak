@@ -1,0 +1,61 @@
+---
+import '@fontsource-variable/figtree';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { isProduction, PRODUCTION_HOSTS, siteUrl, url } from '../site';
+
+interface Props {
+  title: string;
+  description: string;
+  home?: boolean;
+}
+
+const { title, description, home = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {
+      isProduction ? (
+        <>
+          <meta name="robots" content="index, follow, max-image-preview:large" />
+          <link rel="canonical" href={canonical} />
+        </>
+      ) : (
+        <meta name="robots" content="noindex, nofollow" />
+      )
+    }
+    {/* Sicherheitsnetz: wird ein Produktions-Build unter einer fremden Adresse ausgeliefert, nicht indexieren. */}
+    <script is:inline define:vars={{ hosts: PRODUCTION_HOSTS }}>
+      if (!hosts.includes(location.hostname)) {
+        var m = document.querySelector('meta[name="robots"]');
+        if (m) m.setAttribute('content', 'noindex, nofollow');
+      }
+    </script>
+    <meta name="theme-color" content="#0b4e44" />
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={url('favicon-32.png')} sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href={url('apple-touch-icon.png')} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(url('og-image.jpg'), siteUrl).href} />
+  </head>
+  <body>
+    <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+    <Header home={home} />
+    <main id="inhalt">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

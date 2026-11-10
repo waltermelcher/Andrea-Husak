@@ -1,0 +1,30 @@
+---
+import Signet from './Signet.astro';
+import { url } from '../site';
+interface Props { home?: boolean }
+const { home } = Astro.props;
+const to = (hash: string) => (home ? hash : url(hash));
+const links = [
+  ['#formate', 'Formate'],
+  ['#themen', 'Themen'],
+  ['#arbeitsweise', 'Arbeitsweise'],
+  ['#ueber-mich', 'Über mich'],
+];
+---
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href={url('')} aria-label="Andrea Husak-Ramesohl – Startseite">
+      <Signet class="brand-mark" />
+      <span class="brand-text">
+        <span class="brand-name">Andrea Husak-Ramesohl</span>
+        <span class="brand-sub">B.Sc. Psychologie</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <ul>
+        {links.map(([href, label]) => <li><a href={to(href)}>{label}</a></li>)}
+      </ul>
+    </nav>
+    <a class="btn btn-small" href={to('#kontakt')}>Erstgespräch</a>
+  </div>
+</header>

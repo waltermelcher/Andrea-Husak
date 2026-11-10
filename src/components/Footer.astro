@@ -1,0 +1,26 @@
+---
+import Signet from './Signet.astro';
+import { contact, url } from '../site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <Signet class="footer-mark" />
+      <p class="footer-claim">{contact.claim}</p>
+    </div>
+    <address class="footer-address">
+      {contact.company}<br />
+      {contact.street}, {contact.city}<br />
+      <a href={contact.phoneHref}>{contact.phone}</a><br />
+      <a href={`mailto:${contact.email}`}>{contact.email}</a>
+    </address>
+    <div class="footer-legal">
+      <ul>
+        <li><a href={url('impressum/')}>Impressum</a></li>
+        <li><a href={url('datenschutz/')}>Datenschutz</a></li>
+      </ul>
+      <p>© {year} {contact.company}</p>
+    </div>
+  </div>
+</footer>

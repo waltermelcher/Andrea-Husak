@@ -1,0 +1,252 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Signet from '../components/Signet.astro';
+import portrait from '../assets/andrea-husak-ramesohl.jpg';
+import { contact } from '../site';
+
+const mailto = `mailto:${contact.email}?subject=${encodeURIComponent('Anfrage Erstgespräch')}`;
+
+const formats = [
+  {
+    title: 'Vorträge und Keynotes',
+    duration: '30 bis 90 Minuten',
+    group: 'bis 150 Teilnehmende und mehr',
+    what: 'Ein Impuls, der das Thema setzt – mit Interaktion auch in der Großgruppe.',
+    for: 'Gesundheitstage, Abteilungstage, Tagungen. In Präsenz oder online.',
+  },
+  {
+    title: 'Workshops und Seminare',
+    duration: '90 Minuten bis ganztägig',
+    group: '5 bis 30 Personen',
+    what: 'Techniken erproben, Transfer planen, in Serie mit Übungsphasen verankern.',
+    for: 'Teams mit konkretem Anliegen und Führungskreise.',
+  },
+  {
+    title: 'Gesundheitstage',
+    duration: 'halb- oder ganztägig',
+    group: 'ganze Belegschaften und Standorte',
+    what: 'Konzept aus einer Hand: Impulse, Praxisstationen, Begleitmaterial für den Arbeitsplatz.',
+    for: 'Abgestimmt mit BGM, HR und werksärztlichem Dienst.',
+  },
+];
+
+const topics = [
+  'Stressbewältigung',
+  'Resilienz',
+  'Positive Psychologie',
+  'Achtsamkeit',
+  'Entspannung',
+  'Work-Life-Blending',
+  'Umgang mit Veränderungen',
+  'Gesunde Führung',
+  'Gesunde Kommunikation',
+  'Mentale Leistungsfähigkeit',
+];
+
+const reasons = [
+  {
+    title: 'Evidenz statt Esoterik.',
+    text: 'Jede Methode hat einen Wirksamkeitsnachweis: aus Arbeits- und Gesundheitspsychologie, Positiver Psychologie, ACT und weiteren Ansätzen.',
+  },
+  {
+    title: 'Didaktik, die das Gehirn mitnimmt.',
+    text: 'Dramaturgie, Wechsel von Input und Anwendung, Wiederholung in Intervallen. So werden die Inhalte erinnert und im Alltag angewendet.',
+  },
+  {
+    title: 'Passgenau für die Zielgruppe.',
+    text: 'Vom Montageband über Controlling und Sales bis zum Führungskreis: gleiches Ziel, andere Ansprache, andere Übungen.',
+  },
+  {
+    title: 'Professionell bis ins Detail.',
+    text: 'Recherche, Aufbereitung und Präsentation aus einer Hand – mit dem Handwerk aus über 25 Jahren Rundfunk und TV als Redakteurin, Moderatorin und Sprecherin, u. a. für SWR, BR und arte.',
+  },
+  {
+    title: 'Auf Deutsch und Englisch.',
+    text: 'Alle Formate auch für internationale Teams, gemischte Gruppen und Standorte im Ausland – ohne Dolmetscher, ohne Qualitätsverlust.',
+  },
+];
+
+const qualifications = [
+  'B.Sc. Psychologie, graduiertes Mitglied im BDP',
+  'Zertifizierte Trainerin für Stressbewältigung, Resilienz und Entspannungsverfahren (PMR, Autogenes Training)',
+  'PERMA-Lead© und Gesunde Führung',
+  'Über 25 Jahre Rundfunk und TV als Redakteurin, Moderatorin und Sprecherin',
+];
+
+const industries = ['Automobilindustrie', 'IT', 'Verwaltung', 'Baubranche', 'Bildungswesen'];
+---
+
+<Base
+  home
+  title="Andrea Husak-Ramesohl – Mentale Stärke für Unternehmen"
+  description="Vorträge, Workshops und Gesundheitstage zu Stressbewältigung, Resilienz und gesunder Führung. Wissenschaftlich fundiert, auf Ihre Zielgruppe zugeschnitten. Auf Deutsch und Englisch."
+>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="claim">{contact.claim}</p>
+        <h1>Mentale Stärke, die im Arbeitsalltag bleibt.</h1>
+        <p class="lead">
+          Vorträge, Workshops und Gesundheitstage für Unternehmen, die psychische Gesundheit als
+          Leistungsfaktor ernst nehmen.
+        </p>
+        <div class="actions">
+          <a class="btn" href="#kontakt">Erstgespräch vereinbaren</a>
+          <a class="btn btn-ghost" href="#formate">Formate ansehen</a>
+        </div>
+        <dl class="facts">
+          <div><dt>Vorträge und Workshops</dt><dd>1.000+</dd></div>
+          <div><dt>Teilnehmende seit 2014</dt><dd>10.000+</dd></div>
+          <div><dt>Sprachen</dt><dd>DE / EN</dd></div>
+        </dl>
+      </div>
+      <figure class="hero-portrait">
+        <Signet class="hero-signet" />
+        <Image
+          src={portrait}
+          alt="Porträt von Andrea Husak-Ramesohl"
+          widths={[420, 640, 900]}
+          sizes="(min-width: 960px) 420px, 80vw"
+          loading="eager"
+          fetchpriority="high"
+          class="portrait-img"
+        />
+        <figcaption>
+          <strong>Andrea Husak-Ramesohl</strong>
+          <span>B.Sc. Psychologie, Mitglied im BDP</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap intro-grid">
+      <h2 class="intro-title">Betriebliche Gesundheitsförderung, die mit der Zeit geht.</h2>
+      <p class="intro-text">
+        Ihre Teams arbeiten in hohem Tempo und unter ständiger Veränderung. Ich gebe ihnen
+        Werkzeuge, die gleich nach dem Workshop funktionieren: wissenschaftlich fundiert, auf Ihre
+        Zielgruppe zugeschnitten und so vermittelt, dass sie hängen bleiben.
+      </p>
+    </div>
+  </section>
+
+  <section class="section formats" id="formate" aria-labelledby="formate-title">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="formate-title">Drei Formate, ein Ziel</h2>
+        <p>Vom kurzen Impuls bis zum ganzen Gesundheitstag – jeweils in Präsenz oder online.</p>
+      </header>
+      <div class="format-grid">
+        {
+          formats.map((f) => (
+            <article class="format">
+              <h3>{f.title}</h3>
+              <dl>
+                <div>
+                  <dt>Dauer</dt>
+                  <dd>{f.duration}</dd>
+                </div>
+                <div>
+                  <dt>Gruppe</dt>
+                  <dd>{f.group}</dd>
+                </div>
+                <div>
+                  <dt>Was passiert</dt>
+                  <dd>{f.what}</dd>
+                </div>
+                <div>
+                  <dt>Geeignet für</dt>
+                  <dd>{f.for}</dd>
+                </div>
+              </dl>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section topics" id="themen" aria-labelledby="themen-title">
+    <div class="wrap topics-grid">
+      <header class="section-head">
+        <h2 id="themen-title">Themen</h2>
+        <p>Jedes Thema gibt es als Vortrag, als Workshop oder als Baustein eines Gesundheitstags.</p>
+      </header>
+      <ul class="topic-list">
+        {topics.map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section reasons" id="arbeitsweise" aria-labelledby="arbeitsweise-title">
+    <div class="wrap reasons-grid">
+      <header class="reasons-head">
+        <h2 id="arbeitsweise-title">Warum Unternehmen mit mir arbeiten</h2>
+        <Signet class="reasons-signet" />
+      </header>
+      <ul class="reason-list">
+        {
+          reasons.map((r) => (
+            <li>
+              <h3>{r.title}</h3>
+              <p>{r.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section about" id="ueber-mich" aria-labelledby="ueber-title">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <h2 id="ueber-title">Qualifikation und Erfahrung</h2>
+        <ul class="check-list">
+          {qualifications.map((q) => <li>{q}</li>)}
+        </ul>
+        <p class="industries-label">Kunden aus</p>
+        <ul class="industries">
+          {industries.map((i) => <li>{i}</li>)}
+        </ul>
+      </div>
+      <aside class="reference" aria-label="Hauptreferenz">
+        <p class="reference-label">Hauptreferenz</p>
+        <p class="reference-text">
+          Ein führender deutscher Automobilhersteller – an verschiedenen Standorten, von der
+          Nachtschicht bis zum C-Level.
+        </p>
+        <p class="reference-meta">Über 1.000 Vorträge und Workshops seit 2014</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section contact" id="kontakt" aria-labelledby="kontakt-title">
+    <div class="wrap">
+      <div class="contact-panel">
+        <div class="contact-intro">
+          <h2 id="kontakt-title">Nächster Schritt: 30 Minuten Erstgespräch</h2>
+          <p>Unverbindlich und zum Kennenlernen. So geht es weiter:</p>
+          <ol class="steps">
+            <li>Sie schildern Ihr Anliegen.</li>
+            <li>Ich schlage ein passendes Thema und Format vor.</li>
+            <li>Auf Wunsch erhalten Sie innerhalb von drei Werktagen ein Angebot.</li>
+          </ol>
+        </div>
+        <div class="contact-ways">
+          <a class="contact-way" href={mailto}>
+            <span class="contact-way-label">E-Mail schreiben</span>
+            <span class="contact-way-value">{contact.email}</span>
+          </a>
+          <a class="contact-way" href={contact.phoneHref}>
+            <span class="contact-way-label">Anrufen</span>
+            <span class="contact-way-value">{contact.phone}</span>
+          </a>
+          <p class="contact-person">
+            {contact.name}<br />{contact.company}, {contact.city.replace(/^\d+\s/, '')}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
